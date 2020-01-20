@@ -1,0 +1,33 @@
+version: '3'
+services:
+ bitbucket:
+  image: "atlassian/bitbucket-server:latest"
+  container_name: bitbucket
+  restart: always
+  ports:
+   - "7990:7990"
+   - "7999:7999"
+  environment:
+   - BITBUCKET_HOME=/var/atlassian/application-data/bitbucket/
+  volumes:
+   - bitbucketData:/var/atlassian/application-data/bitbucket
+ db:
+  image: postgres:latest
+  container_name: bitbucket-database
+  restart: always
+  ports:
+   - "5432:5432"
+  environment:
+   POSTGRES_PASSWORD: postgres
+   POSTGRES_USER: postgres
+   POSTGRES_DB: postgres
+   PGDATA: /var/lib/postgresql/data/pgdata
+  volumes:
+   - bitbucketDbVolume:/var/lib/postgresql/data
+volumes:
+ bitbucketData:
+  external:
+   name: bitbucketData
+ bitbucketDbVolume:
+  external:
+   name: bitbucketDbVolume
