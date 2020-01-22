@@ -1,7 +1,7 @@
 #!/bin/bash
 source tools/colors.cfg
 source config/environment.cfg
-source tools/render.cfg
+source tools/render.sh
 
 function CreateVolume {
   if docker volume inspect $1 > /dev/null 2>&1; then
