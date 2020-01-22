@@ -31,7 +31,11 @@ To create a backup of your currently running Bitbucket server, follow the standa
 4. run the service with Docker compose
 
 ## SOURCES
+deploy, backup and restore:
 https://medium.com/@niko.huber/dockerizing-bitbucket-server-d07404eefc51
+
+link between bitbucket and postgres:
+https://github.com/jmillxyz/docker-bitbucket-postgres
 
 back up bitbucket and postgres:
 https://confluence.atlassian.com/bitbucketserver/using-bitbucket-server-diy-backup-776640056.html
