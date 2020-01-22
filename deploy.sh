@@ -19,7 +19,7 @@ function CreateVolume {
 
 echo -e ${COLOR_CYAN}
 
-CreateVolume ${BITBUCKET_DB_VOLUME_NAME}
+CreateVolume ${POSTGRES_VOLUME_NAME}
 CreateVolume ${BITBUCKET_VOLUME_NAME}
 
 Render bitbucket-compose.yaml
