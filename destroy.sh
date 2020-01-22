@@ -19,9 +19,10 @@ function DeleteVolume {
 echo -e ${COLOR_RED_LIGHT}
 
 echo "Killing/Removing Bitbucket container..."
-docker kill ${BITBUCKET_CONTAINER_NAME} && docker rm ${BITBUCKET_CONTAINER_NAME}
+docker kill ${BITBUCKET_CONTAINER_NAME} && docker rm ${BITBUCKET_CONTAINER_NAME} 2>&1
 echo "Killing/Removing Postgres container..."
-docker kill ${POSTGRES_CONTAINER_NAME} && docker rm ${POSTGRES_CONTAINER_NAME}
+docker kill ${POSTGRES_CONTAINER_NAME} && docker rm ${POSTGRES_CONTAINER_NAME} 2>&1
+echo; echo
 
 read -p "Would you like to remove the Bitbucket and Postgres Docker images? [y/N] " delImages
 case ${delImages} in
@@ -31,6 +32,7 @@ case ${delImages} in
      *)
           ;;
 esac
+echo; echo
 
 echo "Removing Docker volumes makes information unaccessible in the future."
 read -p "Would you like to remove the Bitbucket and Postgres Docker volumes? [y/N] " delVolumes
