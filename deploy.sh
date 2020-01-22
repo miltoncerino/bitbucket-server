@@ -1,6 +1,7 @@
 #!/bin/bash
 source tools/colors.cfg
 source config/environment.cfg
+source tools/render.cfg
 
 function CreateVolume {
   if docker volume inspect $1 > /dev/null 2>&1; then
@@ -21,4 +22,5 @@ echo -e ${COLOR_CYAN}
 CreateVolume ${BITBUCKET_DB_VOLUME_NAME}
 CreateVolume ${BITBUCKET_VOLUME_NAME}
 
-docker-compose -f bitbucket-compose.yaml up -d
+Render bitbucket-compose.yaml
+docker-compose -f rendered-bitbucket-compose.yaml up -d

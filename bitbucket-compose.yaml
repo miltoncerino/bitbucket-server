@@ -1,8 +1,8 @@
 version: '3'
 services:
  bitbucket:
-  image: "atlassian/bitbucket-server:latest"
-  container_name: bitbucket
+  image: "atlassian/bitbucket-server:{{ BITBUCKET_VERSION }}"
+  container_name: {{ BITBUCKET_CONTAINER_NAME }}
   restart: always
   ports:
    - "7990:7990"
