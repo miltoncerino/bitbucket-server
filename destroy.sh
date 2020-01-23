@@ -7,21 +7,24 @@ function DeleteVolume {
     echo "Deleting data volume: $1"
     docker volume rm $1
     if [ $? -eq 0 ]; then
-      echo "Data volume \'$1\' has been removed"
+      echo "Data volume '$1' has been removed"
     else
       echo "There was an error deleting the volume"
     fi
   else
-    echo "Volume \'$1\' was not found"
+    echo "Volume '$1' was not found"
   fi
 }
 
-echo -e ${COLOR_RED_LIGHT}
+printf ${COLOR_RED}
 
-echo "Killing/Removing Bitbucket container..."
-docker kill ${BITBUCKET_CONTAINER_NAME} && docker rm ${BITBUCKET_CONTAINER_NAME} 2>&1
-echo "Killing/Removing Postgres container..."
-docker kill ${POSTGRES_CONTAINER_NAME} && docker rm ${POSTGRES_CONTAINER_NAME} 2>&1
+echo "Killing/Removing Bitbucket and Postgres containers..."
+docker-compose -f rendered-bitbucket-compose.yaml down
+
+#echo "Killing/Removing Bitbucket container..."
+#docker kill ${BITBUCKET_CONTAINER_NAME} && docker rm ${BITBUCKET_CONTAINER_NAME} 2>&1
+#echo "Killing/Removing Postgres container..."
+#docker kill ${POSTGRES_CONTAINER_NAME} && docker rm ${POSTGRES_CONTAINER_NAME} 2>&1
 echo; echo
 
 read -p "Would you like to remove the Bitbucket and Postgres Docker images? [y/N] " delImages
@@ -46,3 +49,4 @@ case ${delVolumes} in
 esac
 
 echo "DONE"
+printf ${COLOR_STANDARD}

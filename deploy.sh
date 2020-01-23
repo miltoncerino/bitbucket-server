@@ -17,10 +17,13 @@ function CreateVolume {
   fi
 }
 
-echo -e ${COLOR_CYAN}
+printf ${COLOR_BLUE}
 
 CreateVolume ${POSTGRES_VOLUME_NAME}
 CreateVolume ${BITBUCKET_VOLUME_NAME}
 
 Render bitbucket-compose.yaml
 docker-compose -f rendered-bitbucket-compose.yaml up -d
+
+echo "DONE"
+printf ${COLOR_STANDARD}

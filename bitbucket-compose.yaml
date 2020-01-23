@@ -11,6 +11,8 @@ services:
    - BITBUCKET_HOME=/var/atlassian/application-data/bitbucket/
   volumes:
    - {{ BITBUCKET_VOLUME_NAME }}:/var/atlassian/application-data/bitbucket
+  links:
+   - db
  db:
   image: postgres:{{ POSTGRES_VERSION }}
   container_name: {{ POSTGRES_CONTAINER_NAME }}

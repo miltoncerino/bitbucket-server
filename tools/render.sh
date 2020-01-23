@@ -1,5 +1,5 @@
 function Render {
-    echo "Rendering all values in between {{ }}..."
+    echo "Rendering yaml..."
     # variables
     BITBUCKET_VERSION_token="{{ BITBUCKET_VERSION }}" # find all these...
     BITBUCKET_VERSION_value=${BITBUCKET_VERSION} # replace with
